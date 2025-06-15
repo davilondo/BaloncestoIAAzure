@@ -1,0 +1,80 @@
+qnaList:
+  - id: "1"
+    questions:
+      - "¿Cuántos jugadores forman un equipo de baloncesto?"
+      - "¿Cuántos jugadores hay en la cancha por equipo?"
+    answer: "En baloncesto cada equipo alinea cinco jugadores en la cancha al mismo tiempo."
+    metadata:
+      category: "reglas"
+
+  - id: "2"
+    questions:
+      - "¿Qué altura tiene el aro de baloncesto?"
+      - "¿A qué altura está el canasto?"
+    answer: "El aro está situado a 3,05 metros (10 pies) del suelo, tanto en competiciones FIBA como en la NBA."
+    metadata:
+      category: "equipamiento"
+
+  - id: "3"
+    questions:
+      - "¿Cuánto dura un partido de la NBA?"
+      - "Duración del juego en la NBA"
+    answer: "Un partido de la NBA se divide en cuatro cuartos de 12 minutos cada uno (48 minutos en total de tiempo de juego)."
+    metadata:
+      category: "reglas"
+
+  - id: "4"
+    questions:
+      - "¿Cuál es la longitud y el ancho de una cancha FIBA?"
+      - "Medidas de la pista de baloncesto internacional"
+    answer: "Según FIBA, la cancha mide 28 metros de largo por 15 metros de ancho."
+    metadata:
+      category: "infraestructura"
+
+  - id: "5"
+    questions:
+      - "¿Cuándo se restablece el reloj de posesión a 14 segundos?"
+      - "Reset de 14 segundos en baloncesto"
+    answer: "El reloj de posesión se reinicia a 14 segundos si el equipo atacante recupera el balón tras un rebote ofensivo o cuando se pita una falta defensiva en su mitad ofensiva (reglas FIBA 2024 y NBA actuales)."
+    metadata:
+      category: "reglas"
+
+  - id: "6"
+    questions:
+      - "¿Qué es una falta personal?"
+      - "Definición de falta personal en baloncesto"
+    answer: "Una falta personal es un contacto ilegal cometido por un jugador con un oponente que le da una ventaja injusta. Cinco faltas descalifican a un jugador en FIBA y seis en la NBA."
+    metadata:
+      category: "reglas"
+
+  - id: "7"
+    questions:
+      - "Distancia de la línea de triple FIBA"
+      - "¿A qué distancia está la línea de 3 puntos internacional?"
+    answer: "La línea de triple FIBA está a 6,75 m del centro del aro (6,60 m en las esquinas)."
+    metadata:
+      category: "infraestructura"
+
+  - id: "8"
+    questions:
+      - "¿Cuántos tiempos muertos tiene cada equipo en la NBA?"
+      - "Número de timeouts por equipo en la NBA"
+    answer: "En la NBA cada equipo dispone de siete tiempos muertos regulados que pueden usarse durante el partido, con restricciones específicas por periodo (regla 2024‑25)."
+    metadata:
+      category: "reglas"
+
+  - id: "9"
+    questions:
+      - "¿Qué es un triple‑doble?"
+      - "Significado de triple doble en baloncesto"
+    answer: "Un triple‑doble es cuando un jugador alcanza dobles dígitos en tres de las cinco categorías estadísticas principales (puntos, rebotes, asistencias, robos o tapones) en un mismo partido."
+    metadata:
+      category: "estadísticas"
+
+  - id: "10"
+    questions:
+      - "¿Quién ganó la Copa del Mundo FIBA 2023?"
+      - "Campeón Mundial FIBA 2023"
+    answer: "Alemania ganó la Copa del Mundo FIBA 2023 tras vencer a Serbia en la final celebrada en Manila."
+    metadata:
+      category: "historia"
