@@ -1,0 +1,61 @@
+name: CI Pipeline para Azure QnA Maker
+
+# Lo que vamos a montar ahora es un pipeline de CI
+# Cuál es el producto? INFORME DE PRUEBAS ACTUALIZADO a la última versión
+
+env:
+  ENDPOINT: https://preguntas.cognitiveservices.azure.com/
+  PROYECTO: BaloncestoPruebaUnitaria
+on:
+  push:
+    branches:
+    - desa
+
+# Damos de alta trabajos
+jobs:
+  crear_proyecto_temporal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Crear proyecto temporal
+        run: |
+                curl "$ENDPOINT/language/authoring/query-knowledgebases/projects/$PROYECTO?api-version=2023-04-01" \
+                  -X PATCH \
+                  -H "Content-Type: application/json"  \
+                  -H "Ocp-Apim-Subscription-Key: $AZURE_SUBSCRIPTION_KEY" \
+                  -d '{
+                          "description": "Proyecto para pruebas unitarias.",
+                          "multilingualResource": false,
+                          "settings": {
+                          "defaultAnswer": "Ni idea tio!"
+                        },
+                        "language": "es"
+                      }'
+
+  pruebas_unitarias:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cargar las preguntas propias de la rama
+        run: echo "Cargar las preguntas propias de la rama"
+        # Aquí podemos escribir código como si fuera de una terminal
+      - name: Ejecutar las pruebas unitarias
+        run: echo "Ejecutar las pruebas unitarias"
+      - name: Generar el informe de pruebas unitarias
+        run: echo "Generar el informe de pruebas unitarias"
+
+  pruebas_de_integracion:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cargar el resto de preguntas al proyecto temporal
+        run: echo "Cargar el resto de preguntas al proyecto temporal"
+      - name: Ejecutar las pruebas integradas
+        run: echo "Ejecutar las pruebas integradas"
+      - name: Generar el informe de pruebas integradas
+        run: echo "Generar el informe de pruebas integradas"
+
+  eliminar_proyecto_temporal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Eliminar proyecto temporal
+        run: |
+          curl "$ENDPOINT/language/authoring/query-knowledgebases/projects/$PROYECTO?api-version=2023-04-01" \
+           -X DELETE -H "Ocp-Apim-Subscription-Key: $AZURE_SUBSCRIPTION_KEY"
