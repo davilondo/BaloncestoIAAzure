@@ -1,0 +1,63 @@
+# Lo que vamos a montar ahora es un pipeline de CI
+# Cuál es el producto? INFORME DE PRUEBAS ACTUALIZADO a la última versión
+
+env:
+  ENDPOINT: https://preguntas.cognitiveservices.azure.com/
+  PROYECTO: SuperheroesProyectoPruebaUnitaria
+
+# Etapas por las que va pasando el pipeline (script)
+jobs:
+- crear_proyecto_temporal
+- pruebas_unitarias
+- pruebas_de_integracion
+- eliminar_proyecto_temporal
+
+# Damos de alta trabajos
+crear_proyecto_temporal:
+  stage: crear_proyecto_temporal
+  script: |
+    curl "$ENDPOINT/language/authoring/query-knowledgebases/projects/$PROYECTO?api-version=2023-04-01" \
+      -X PATCH \
+      -H "Content-Type: application/json"  \
+      -H "Ocp-Apim-Subscription-Key: $AZURE_SUBSCRIPTION_KEY" \
+      -d '{
+              "description": "Proyecto para pruebas unitarias.",
+              "multilingualResource": false,
+              "settings": {
+                "defaultAnswer": "Ni idea tio!"
+              },
+              "language": "es"
+            }'
+
+
+cargar_las_preguntas_propias_de_la_rama:
+  stage: pruebas_unitarias
+  script: echo "Cargar las preguntas propias de la rama"
+  # Aquí podemos escribir código como si fuera de una terminal
+
+ejecutar_las_pruebas_unitarias:
+  stage: pruebas_unitarias
+  script: echo "Ejecutar las pruebas unitarias"
+
+generar_informe_pruebas_unitarias:
+  stage: pruebas_unitarias
+  script: echo "Generar el informe de pruebas unitarias"
+
+cargar_resto_de_preguntas:
+  stage: pruebas_de_integracion
+  script: echo "Cargar el resto de preguntas al proyecto temporal"
+
+ejecutar_pruebas_integradas:
+  stage: pruebas_de_integracion
+  script: echo "Ejecutar las pruebas integradas"
+
+generar_informe_pruebas_integradas:
+  stage: pruebas_de_integracion
+  script: echo "Generar el informe de pruebas integradas"
+
+eliminar_proyecto_temporal:
+  stage: eliminar_proyecto_temporal
+  script: |
+    curl "$ENDPOINT/language/authoring/query-knowledgebases/projects/$PROYECTO?api-version=2023-04-01" \
+     -X DELETE -H "Ocp-Apim-Subscription-Key: $AZURE_SUBSCRIPTION_KEY"
+
