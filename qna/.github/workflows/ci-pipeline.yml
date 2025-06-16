@@ -6,6 +6,10 @@ name: CI Pipeline para Azure QnA Maker
 env:
   ENDPOINT: https://preguntas.cognitiveservices.azure.com/
   PROYECTO: BaloncestoPruebaUnitaria
+on:
+  push:
+    branches:
+    - desa
 
 # Damos de alta trabajos
 jobs:
